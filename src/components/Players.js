@@ -10,11 +10,12 @@ import {
 import usePlayers from '../hooks/usePlayers';
 import Sidebar from './Sidebar';
 import slug from 'slug';
+import Loading from './Loading';
 
 function Player({ players }) {
   const { playerId } = useParams();
   const player = players.find(({ name }) => slug(name) === playerId);
-  console.log(player);
+
   return (
     <div className="panel">
       <img
@@ -64,7 +65,7 @@ export default function Players() {
   const { loading, response: players } = usePlayers(team);
 
   if (loading === true) {
-    return <div>LOADING</div>;
+    return <Loading />;
   }
 
   return (
