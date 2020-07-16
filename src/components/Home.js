@@ -2,11 +2,12 @@ import React from 'react';
 import useTeamNames from '../hooks/useTeamNames';
 import TeamLogo from './TeamLogo';
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
 
 export default function Home() {
   const { loading, response: teamNames } = useTeamNames();
   if (loading) {
-    return null;
+    return <Loading />;
   }
 
   return (

@@ -3,13 +3,14 @@ import { useParams, Switch, Route, useRouteMatch } from 'react-router-dom';
 import useTeamsArticles from '../hooks/useTeamsArticles';
 import Sidebar from './Sidebar';
 import useArticle from '../hooks/useArticle';
+import Loading from './Loading';
 
 function Article() {
   const { teamId, articleId } = useParams();
 
   const { response: article, loading } = useArticle({ teamId, articleId });
 
-  if (loading) return null;
+  if (loading) return <Loading />;
 
   return (
     <div className="panel">
@@ -26,9 +27,9 @@ function Articles() {
   const { path } = useRouteMatch();
 
   const { loading, response: articles } = useTeamsArticles(teamId);
-  console.log(articles);
+
   if (loading === true) {
-    return <div>LOADING</div>;
+    return <Loading />;
   }
   return (
     <div className="container two-column">

@@ -10,12 +10,13 @@ import {
 } from 'react-router-dom';
 import useTeam from '../hooks/useTeam';
 import TeamLogo from './TeamLogo';
+import Loading from './Loading';
 
 function Team() {
   const { teamId } = useParams();
   const { loading, response: team } = useTeam(teamId);
 
-  if (loading === true) return null;
+  if (loading === true) return <Loading />;
   return (
     <div className="panel">
       <div style={{ width: '100%' }}>
@@ -45,7 +46,7 @@ export default function Teams() {
   const { url } = useRouteMatch();
 
   if (loading === true) {
-    return <p>LOADING</p>;
+    return <Loading />;
   }
 
   return (
