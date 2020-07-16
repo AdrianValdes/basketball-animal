@@ -13,7 +13,8 @@ function CustomLink({ to, children }) {
 }
 
 function Sidebar({ title, list }) {
-  const { url } = useLocation();
+  const { url } = useRouteMatch();
+
   const location = useLocation();
 
   return (
@@ -23,7 +24,10 @@ function Sidebar({ title, list }) {
         {list.map((item) => (
           <CustomLink
             key={item}
-            to={{ pathname: `${url}/${slug(item)}`, search: location.search }}
+            to={{
+              pathname: `${url}/${slug(item)}`,
+              search: location.search,
+            }}
           >
             {item.toUpperCase()}
           </CustomLink>
