@@ -13,11 +13,14 @@ export default function App() {
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route>
-          <Players path="/players" />
+        <Route path="/players">
+          <Players />
         </Route>
-        <Route>
-          <Teams path="/teams" />
+        <Route path="/teams">
+          <Teams />
+        </Route>
+        <Route path="*">
+          <h1 className="text-center">Ups, 404</h1>
         </Route>
       </Switch>
     </Router>
