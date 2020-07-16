@@ -11,7 +11,7 @@ import {
 import useTeam from '../hooks/useTeam';
 import TeamLogo from './TeamLogo';
 
-function Team({ teams }) {
+function Team() {
   const { teamId } = useParams();
   const { loading, response: team } = useTeam(teamId);
 
